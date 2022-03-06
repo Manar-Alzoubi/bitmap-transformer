@@ -4,14 +4,9 @@
 package bitmap.transformer;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.IllegalFormatWidthException;
-
-//import static bitmap.transformer.bitmap.blackAndWhite;
 
 
 public class App {
@@ -22,70 +17,28 @@ public class App {
     }
 
     public static void imageIoWrite() {
-        BufferedImage bImage = null;
-        try {
-            File initialImage = new File("C:/Users/96277/Desktop/image/image2.bmp");
-            bImage = ImageIO.read(initialImage);
 
-
-            ImageIO.write(bImage, "bmp", new File("C:/Users/96277/Desktop/image/image2.bmp"));
-
-        } catch (IOException e) {
-            System.err.println("an error occured ");
-//
-        }
-// return 0;
     }
 
 
+    public static void main(String[] args) throws IOException {
+
+        String fileN = "app/src/main/resources/image.bmp";
+        BufferedImage img = ImageIO.read(new File(fileN));
+        bitmap obj = new bitmap(img,"app/src/main/resources/image5.bmp");
+//        if(args[2].equals("BlacknWhite") ){
+            obj.BlacknWhite();
+//            else if(args[2].equals("BlacknWhite") )
+              obj.light();
+              obj.dark();
 
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-//       switch(args[2]) {
-//            case"blacknWhite":
-//                blackAndWhite();
-//        }
 
-//        String fileinput =args[0];
-        imageIoWrite();
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File("C:/Users/96277/Desktop/image/image.bmp"));
-//            System.out.println(img);
-            System.out.println("image is read");
-
-        } catch (IOException e) {
-            System.err.println("an error occurred while reading image ");
-        }
-        int width = img.getHeight();
-        int height = img.getHeight();
-//        blackAndWhite(width,height);
-//        System.out.println("before   " + img);
-        int rgb;
-
-        for (int h = 1; h < height; h++) {
-            for (int w = 1; w < width; w++) {
-                rgb = 255 - img.getRGB(w, h);
-                img.setRGB(w, h, rgb);
-            }
-        }
-
-
-        // writing image
-//        try {
-//            ImageIO.write(img, "bmp", new File("image2.bmp"));
-//            System.out.println("image is read");
-//
-//        } catch (IOException e) {
-//            System.out.println("An error occurred while writing img");
-//
-//
-//        }
-    }
 
 
     }
+}
+
 
 
 
